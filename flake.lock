@@ -1,0 +1,60 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1667909632,
+        "narHash": "sha256-p9ZTU29fRA0KNQVGIFTA06IcVeoCqYNRvegRdxGZd8k=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "bc5ad970780580ec272b3a6bc5f9bddf4e250d3c",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "src": "src"
+      }
+    },
+    "src": {
+      "flake": false,
+      "locked": {
+        "dir": "Libraries",
+        "lastModified": 1667616007,
+        "narHash": "sha256-dZMNm8z9O0CBO60ZpippWZCCfLJPqxiuSyIu0NFQXK4=",
+        "ref": "refs/heads/main",
+        "rev": "dcf3df941dff6e0f7e18b1ac4368554b1ed6de43",
+        "revCount": 10,
+        "type": "git",
+        "url": "https://code.osu.edu/fehelectronics/proteus_software/simulator_c?dir=Libraries"
+      },
+      "original": {
+        "dir": "Libraries",
+        "type": "git",
+        "url": "https://code.osu.edu/fehelectronics/proteus_software/simulator_c?dir=Libraries"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
