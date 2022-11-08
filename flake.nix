@@ -2,7 +2,7 @@
   description = "Flake utils demo";
   
   inputs.src = {
-    url = "git+https://code.osu.edu/fehelectronics/proteus_software/simulator_c";
+    url = "git+https://code.osu.edu/fehelectronics/proteus_software/simulator_c?dir=Libraries";
     flake = false;
   };
 
@@ -15,6 +15,13 @@
         packages = rec {
           feh-proteus = pkgs.stdenv.mkDerivation {
             name = "feh-proteus";
+            patchPhase = ''
+              substituteInPlace Makefile --replace 'ifeq ($(OS),Windows_NT)' 'ifeq (1,1)'
+            '';
+            buildInputs = with pkgs; [
+              xorg.libX11
+              libGL
+            ];
             inherit src;
           };
           default = feh-proteus;
