@@ -2,7 +2,7 @@
   description = "Flake utils demo";
   
   inputs.src = {
-    url = "git+https://code.osu.edu/fehelectronics/proteus_software/simulator_c?dir=Libraries";
+    url = "git+https://code.osu.edu/fehelectronics/proteus_software/simulator_c";
     flake = false;
   };
 
@@ -16,8 +16,15 @@
           feh-proteus = pkgs.stdenv.mkDerivation {
             name = "feh-proteus";
             patchPhase = ''
-              substituteInPlace Makefile --replace 'ifeq ($(OS),Windows_NT)' 'ifeq (1,1)'
+              substituteInPlace Makefile --replace '-framework OpenGL -framework Cocoa' "$(pkg-config --libs opengl x11 glx)"
             '';
+            installPhase = ''
+              mkdir -p $out/bin
+              cp game.out $out/bin/feh-proteus
+            '';
+            nativeBuildInputs = with pkgs; [
+              pkgconfig
+            ];
             buildInputs = with pkgs; [
               xorg.libX11
               libGL

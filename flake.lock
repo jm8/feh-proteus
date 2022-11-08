@@ -39,19 +39,17 @@
     "src": {
       "flake": false,
       "locked": {
-        "dir": "Libraries",
         "lastModified": 1667616007,
         "narHash": "sha256-dZMNm8z9O0CBO60ZpippWZCCfLJPqxiuSyIu0NFQXK4=",
         "ref": "refs/heads/main",
         "rev": "dcf3df941dff6e0f7e18b1ac4368554b1ed6de43",
         "revCount": 10,
         "type": "git",
-        "url": "https://code.osu.edu/fehelectronics/proteus_software/simulator_c?dir=Libraries"
+        "url": "https://code.osu.edu/fehelectronics/proteus_software/simulator_c"
       },
       "original": {
-        "dir": "Libraries",
         "type": "git",
-        "url": "https://code.osu.edu/fehelectronics/proteus_software/simulator_c?dir=Libraries"
+        "url": "https://code.osu.edu/fehelectronics/proteus_software/simulator_c"
       }
     }
   },
