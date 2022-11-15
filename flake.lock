@@ -33,10 +33,10 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
-        "src": "src"
+        "simulatorsrc": "simulatorsrc"
       }
     },
-    "src": {
+    "simulatorsrc": {
       "flake": false,
       "locked": {
         "lastModified": 1667616007,
