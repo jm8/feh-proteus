@@ -1,5 +1,5 @@
 {
-  description = "Flake utils demo";
+  description = "FEH Proteus simulator";
 
   inputs.simulatorsrc = {
     url = "git+https://code.osu.edu/fehelectronics/proteus_software/simulator_c";
