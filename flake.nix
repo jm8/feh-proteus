@@ -21,11 +21,8 @@
           simulator = pkgs.stdenv.mkDerivation {
             name = "fehproteus-simulator";
             patchPhase = ''
-              cp --dereference $simulatorsrc/Makefile .
               cp --dereference -r $simulatorsrc/Libraries .
               chmod +w -R Libraries
-              chmod +w Makefile
-              substituteInPlace Makefile --replace '-framework OpenGL -framework Cocoa' "$(pkg-config --libs opengl x11 glx)"
             '';
             buildPhase = ''
               make main
