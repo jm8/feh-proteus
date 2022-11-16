@@ -1,6 +1,6 @@
 {
   description = "Flake utils demo";
-  
+
   inputs.simulatorsrc = {
     url = "git+https://code.osu.edu/fehelectronics/proteus_software/simulator_c";
     flake = false;
@@ -15,7 +15,7 @@
 
   outputs = { self, nixpkgs, flake-utils, simulatorsrc, firmwaresrc }:
     flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs {inherit system;}; in
+      let pkgs = import nixpkgs { inherit system; }; in
       {
         packages = rec {
           simulator = pkgs.stdenv.mkDerivation {
@@ -23,7 +23,7 @@
             patchPhase = ''
               cp --dereference $simulatorsrc/Makefile .
               cp --dereference -r $simulatorsrc/Libraries .
-              chmod +w Libraries
+              chmod +w -R Libraries
               chmod +w Makefile
               substituteInPlace Makefile --replace '-framework OpenGL -framework Cocoa' "$(pkg-config --libs opengl x11 glx)"
             '';
@@ -48,14 +48,28 @@
             name = "fehproteus-physical";
             src = ./.;
             patchPhase = ''
-              cp -r --dereference $firmwaresrc simulator_firmware
+              cp --dereference -r $firmwaresrc fehproteusfirmware
+              chmod -R +w fehproteusfirmware
+            '';
+            configurePhase = ''
+            
+            '';
+            buildPhase = ''
+              echo hello
+              cd fehproteusfirmware
+              make
+              cd ..
+            '';
+            installPhase = ''
+              mkdir -p "$out"
+              cp .map .elf .s19 $out
             '';
             nativeBuildInputs = with pkgs; [
               gcc-arm-embedded
             ];
             inherit firmwaresrc;
           };
-          default = physical;
+          default = simulator;
         };
       }
     );

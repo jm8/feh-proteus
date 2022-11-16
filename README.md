@@ -8,6 +8,6 @@ nix build
 ```
 ## to get lsp (clangd)
 ```sh
-nix develop -c sh -c 'echo -I$simulatorsrc/Libraries > compile_flags.txt'
+nix develop -c sh -c 'printf -- "-xc++\n-I$simulatorsrc/Libraries" > compile_flags.txt'
 ```
 lol

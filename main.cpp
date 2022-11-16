@@ -1,13 +1,11 @@
-#include "FEHLCD.h"
-#include "FEHUtility.h"
-#include <cstdio>
-#include <limits>
+// #include "otherfile.h"
+#include <FEHLCD.h>
+#include <FEHUtility.h>
 
 int main() {
-    char message[30];
+    const char *message = "hello";
     while (1) {
         LCD.Clear();
-        std::snprintf(message, 30, "Time: %lf", TimeNow());
         LCD.WriteAt(message, 0, 0);
         LCD.Update();
         // Never end
