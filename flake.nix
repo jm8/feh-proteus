@@ -6,15 +6,20 @@
     flake = false;
   };
 
+  inputs.firmwaresrc = {
+    url = "git+https://code.osu.edu/fehelectronics/proteus_software/fehproteusfirmware";
+    flake = false;
+  };
+
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
-  outputs = { self, nixpkgs, flake-utils, simulatorsrc }:
+  outputs = { self, nixpkgs, flake-utils, simulatorsrc, firmwaresrc }:
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = import nixpkgs {inherit system;}; in
       {
         packages = rec {
           simulator = pkgs.stdenv.mkDerivation {
-            name = "feh-proteus";
+            name = "fehproteus-simulator";
             patchPhase = ''
               cp --dereference $simulatorsrc/Makefile .
               cp --dereference -r $simulatorsrc/Libraries .
@@ -39,7 +44,18 @@
             src = ./.;
             inherit simulatorsrc;
           };
-          default = simulator;
+          physical = pkgs.stdenv.mkDerivation {
+            name = "fehproteus-physical";
+            src = ./.;
+            patchPhase = ''
+              cp -r --dereference $firmwaresrc simulator_firmware
+            '';
+            nativeBuildInputs = with pkgs; [
+              gcc-arm-embedded
+            ];
+            inherit firmwaresrc;
+          };
+          default = physical;
         };
       }
     );

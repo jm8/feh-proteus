@@ -1,6 +1,7 @@
 #include "FEHLCD.h"
 #include "FEHUtility.h"
 #include <cstdio>
+#include <limits>
 
 int main() {
     char message[30];

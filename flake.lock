@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "firmwaresrc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1668104796,
+        "narHash": "sha256-j3bKRLRmaIjmkeuqGwgQdaxq13Y2sVWPBEim9L2sw2M=",
+        "ref": "refs/heads/master",
+        "rev": "eaf3dfcc16742b804f6430248980bb6eac729460",
+        "revCount": 301,
+        "type": "git",
+        "url": "https://code.osu.edu/fehelectronics/proteus_software/fehproteusfirmware"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://code.osu.edu/fehelectronics/proteus_software/fehproteusfirmware"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -31,6 +47,7 @@
     },
     "root": {
       "inputs": {
+        "firmwaresrc": "firmwaresrc",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
         "simulatorsrc": "simulatorsrc"
