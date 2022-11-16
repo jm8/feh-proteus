@@ -32,7 +32,7 @@
             '';
             installPhase = ''
               mkdir -p $out/bin
-              cp game.out $out/bin/feh-proteus
+              cp game.out $out/bin/fehproteus-simulator
             '';
             nativeBuildInputs = with pkgs; [
               pkgconfig
